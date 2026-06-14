@@ -2,6 +2,8 @@ package com.example.meetings.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "meeting_participants",
         uniqueConstraints = @UniqueConstraint(columnNames = {"meeting_id", "user_id"}))
@@ -37,4 +39,18 @@ public class MeetingParticipant {
     public InviteStatus getStatus() { return status; }
 
     public void setStatus(InviteStatus status) { this.status = status; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof MeetingParticipant that)) return false;
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getMeeting().getId(), that.getMeeting().getId())
+                && Objects.equals(getUser(), that.getUser())
+                && getStatus() == that.getStatus();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getMeeting().getId(), getUser(), getStatus());
+    }
 }

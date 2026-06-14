@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -62,5 +63,26 @@ public class Meeting {
     public boolean isConfirmed() {
         if (participants.isEmpty()) return false;
         return participants.stream().allMatch(p -> p.getStatus() == InviteStatus.ACCEPTED);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Meeting meeting)) return false;
+        return Objects.equals(getId(), meeting.getId())
+                && Objects.equals(getTitle(), meeting.getTitle())
+                && Objects.equals(getDescription(), meeting.getDescription())
+                && Objects.equals(getStartTime(), meeting.getStartTime())
+                && Objects.equals(getEndTime(), meeting.getEndTime())
+                && Objects.equals(getOrganizer(), meeting.getOrganizer())
+                && Objects.equals(getParticipants(), meeting.getParticipants());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                getId(), getTitle(), getDescription(),
+                getStartTime(), getEndTime(),
+                getOrganizer(), getParticipants()
+        );
     }
 }
