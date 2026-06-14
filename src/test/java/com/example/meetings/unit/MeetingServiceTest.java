@@ -10,10 +10,12 @@ import com.example.meetings.repository.MeetingRepository;
 import com.example.meetings.repository.UserRepository;
 import com.example.meetings.service.MeetingService;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.Duration;
@@ -29,7 +31,9 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(SpringExtension .class)
+@ExtendWith(SpringExtension.class)
+@ActiveProfiles("dev")
+@Tag("unit-tests")
 public class MeetingServiceTest {
 
     @Mock MeetingRepository meetingRepository;

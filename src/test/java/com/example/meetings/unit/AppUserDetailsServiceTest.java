@@ -3,6 +3,7 @@ package com.example.meetings.unit;
 import com.example.meetings.model.User;
 import com.example.meetings.repository.UserRepository;
 import com.example.meetings.service.AppUserDetailsService;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,6 +11,7 @@ import org.mockito.Mock;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
@@ -22,6 +24,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
+@ActiveProfiles("dev")
+@Tag("unit-tests")
 public class AppUserDetailsServiceTest {
 
     @Mock UserRepository userRepository;

@@ -3,10 +3,12 @@ package com.example.meetings.unit;
 import com.example.meetings.model.User;
 import com.example.meetings.repository.UserRepository;
 import com.example.meetings.service.UserService;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
@@ -15,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
+@ActiveProfiles("dev")
+@Tag("unit-tests")
 public class UserServiceTest {
 
     UserRepository userRepository = mock(UserRepository.class);
