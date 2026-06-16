@@ -6,6 +6,6 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @SelectPackages("com.example.meetings")
-@IncludeTags("integration-tests")
+@IncludeTags({"light-integration-tests", "heavy-integration-tests"})
 public class IntegrationTestSuite {
 }
