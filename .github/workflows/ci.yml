@@ -64,4 +64,5 @@ jobs:
 
       - name: run integration-heavy and e2e tests
         run: |
+          chmod +x mvnw
           ./mvnw verify -Dgroups=heavy-integration-tests,e2e-tests -Pstaging
