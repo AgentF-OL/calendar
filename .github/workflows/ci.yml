@@ -36,6 +36,7 @@ jobs:
 
       - name: run unit and integration-light tests
         run: |
+          chmod +x mvnw
           ./mvnw test -Punit-tests
           ./mvnw verify -Plight-integration-tests
 
